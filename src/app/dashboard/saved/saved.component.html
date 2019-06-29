@@ -1,0 +1,26 @@
+<p class="subtitle">Saved items:</p>
+<app-spinner *ngIf="showSpinner else showSavedItems"></app-spinner>
+
+<ng-template #showSavedItems>
+<div *ngIf="_isnull else History">
+  Nothing saved
+</div>
+
+<ng-template #History>
+  
+  <div class="list">
+      <div class="justify-contents" *ngFor="let item of savedItem$">
+        <div class="book_title">
+          <a routerLink="/dashboard/books/{{item.bookId}}" class="subtitle">{{item.bookTitle}}</a>
+          <p *ngIf="item.authors" class="authors">
+            <span *ngFor="let author of item.authors">{{author}}</span>
+          </p>
+        </div>
+        <div class="delete">
+          <a class="button button-danger" (click)="delete(item.id)"><i class="far fa-trash-alt"></i></a>
+        </div>
+      </div> 
+    </div>
+</ng-template>
+
+</ng-template>

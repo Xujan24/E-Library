@@ -1,0 +1,64 @@
+<app-advance-search (newQuery)="onNewQeury($event)" [isSmall]='isSmall'></app-advance-search>
+
+<app-spinner *ngIf = "showSpinner else searchResults"></app-spinner>
+<ng-template #searchResults>
+  <div *ngIf="HttpError else Results">
+    Sorry, bad request. Try new search.
+  </div>
+
+  <ng-template #Results>
+      <div *ngIf="totalItem$ == 0 else showResults">
+          <p class="title">Sorry No results found!</p>
+        </div>
+        
+        <ng-template #showResults>
+            <p style="width:100%;padding-bottom: 0.2rem;margin-bottom: 0.5rem;" class="search_title title">
+                Showing results for 
+              <span *ngIf="queryString$">{{queryString$ | invertQuery}}</span>
+              <span *ngIf="author$">{{author$ | invertQuery}}</span>
+              <span *ngIf="subject$">{{subject$ | invertQuery}}</span>
+              <span *ngIf="isbn$">{{isbn$ | invertQuery}}</span> :
+            </p>
+            <p class="subtitle" *ngIf = "startIndex > 0">Showing results {{startIndex}} - {{startIndex+maxItems}} of {{totalItem$}}</p>
+            <hr style="color: #dedfe0"/>
+        
+            <div class="items">
+              <div class="item" *ngFor="let book of book$; insex as i">
+                <div class="thumbnail">
+                  <div *ngIf="book.volumeInfo.imageLinks else noThumbnail">
+                      <img src="{{book.volumeInfo?.imageLinks.smallThumbnail}}" class="img thumbnail-img" alt="THUMBNAIL" />
+                  </div>
+                  <ng-template #noThumbnail>
+                      <img src="../../../assets/imgs/not_thumbnail_small.png" class="img thumbnail-img" alt="NO THUMBNAIL" />
+                  </ng-template>          
+                </div>
+                <div class="item-details">
+                  <p class="title">{{book.volumeInfo?.title}}</p>
+                  
+                  <ul class="subtitle authors">
+                    <li *ngFor="let author of book.volumeInfo.authors">{{author}}</li>
+                  </ul>
+                  <p class="publisher">{{book.volumeInfo?.publisher}}</p>
+                  <p class="description" *ngIf="book.volumeInfo.description">
+                    {{book.volumeInfo?.description | truncate: 300}}
+                  </p>
+                  
+                  <div class="controls">
+                    <app-controls [bookID] = "book.id" [showViewDetails] = "true" [bookTitle] = "book.volumeInfo.title" [authors]="book.volumeInfo.authors"></app-controls>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+      
+            <div class="justify-contents">
+              <div class="left">
+                <a *ngIf = 'startIndex > 0' (click)="previous()"><i class="fas fa-angle-double-left"></i> Previous</a>
+              </div>
+              <div class="right">
+                <a *ngIf = 'totalItem$ > (startIndex+maxItems)' (click)="next()">Next <i class="fas fa-angle-double-right"></i></a>
+              </div>
+            </div>
+        </ng-template>
+  </ng-template>
+</ng-template>

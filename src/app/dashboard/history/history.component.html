@@ -1,0 +1,26 @@
+<p class="subtitle">You recently viewed:</p>
+
+<app-spinner *ngIf="showSpinner else showHistory"></app-spinner>
+
+<ng-template #showHistory>
+  <div *ngIf="_isnull else History">
+    Sorry, no history to show
+  </div>
+  
+  <ng-template #History>
+    <div class="list">
+        <div class="justify-contents" *ngFor="let history of historie$">
+          <div class="book_title">
+            <a routerLink="/dashboard/books/{{history.bookId}}" class="subtitle">{{history.bookTitle}}</a>
+            <p *ngIf="history.authors" class="authors">
+              <span *ngFor="let author of history.authors">{{author}}</span>
+            </p>
+          </div>
+          <div class="delete">
+            <a class="button button-danger" (click)="delete(history.id)"><i class="far fa-trash-alt"></i></a>
+          </div>
+        </div> 
+      </div>
+  </ng-template>
+</ng-template>
+

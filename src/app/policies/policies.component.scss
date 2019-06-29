@@ -1,0 +1,25 @@
+.top-section{
+    margin: 1.5rem 0rem;
+    width: 100%;
+}
+
+.subtitle{
+    padding: 1rem 0rem 0.5rem 0rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.disc{
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: rgba(0,0,0,0.7);
+}
+
+ul{
+    list-style-type: disc;
+    margin-left: 1rem;
+
+    li{
+        padding: 0.5rem 0rem 0.5rem 0.3rem;
+    }
+}

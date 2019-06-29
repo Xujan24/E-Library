@@ -1,0 +1,59 @@
+<header class="top-section">
+  <div class="brand">
+      <div>
+          <img src="../assets/logo.png" alt="LOGO" />
+      </div>
+
+      <div>
+          <p class="brand-title">E-Library Portal</p>
+          <p class="brand-subtitle">Everything you need.</p>
+      </div>
+
+  </div>
+</header>
+
+<main class="box">
+  <h2 style="text-align: center; margin-bottom: 1rem;font-weight: 400;font-size: 1.3rem;">Welcome to E-library portal</h2>
+  <!--
+      error message
+  -->
+  <div class="message message-danger has-close" style="justify-content: center;" [ngClass]="{'hidden': !is_visible}">
+      <div class="message-text">
+          {{errorMessage}}
+      </div>
+      <div class="close-btn">
+          <a (click)="toggleMessage()"><span class="icon"><i class="fas fa-times-circle"></i></span></a>
+      </div>
+  </div>
+
+  <!--
+      login form
+  -->
+  <form class="form-login" [formGroup]='loginForm'>
+          <div>
+              <input type="text" class="form-control" placeholder="username" formControlName="username"/>
+          </div>
+          <div>
+              <input type="password" class="form-control" placeholder="password" formControlName="password"/>
+              <p class="forgot-password"><a routerLink="/password-reset">Forgot Password?</a></p>
+          </div>
+          
+          <button type="button" class="button button-primary" (click)="login()">Login</button>
+  </form>
+
+  <div class="fancy-title">
+      <span>OR</span>
+  </div>
+  <div style="text-align: center;margin: 1.5rem 0rem;">
+    <a class="button" routerLink='/signup'>Sign Up</a>
+  </div>
+  
+<!--
+    foot notes
+-->
+  <div class="footnote">
+      <p>If you are having any troubles logging in, please contact the administration on <span style="color: red; text-decoration: underline;">11 12 23</span>.
+      For any kind of general questions, kindly visit the <a style="text-decoration: underline" href="#" target="_blank">FAQ</a> page.
+  Or directly send us an email at enquries@elibrary.com. </p>
+  </div>
+</main>

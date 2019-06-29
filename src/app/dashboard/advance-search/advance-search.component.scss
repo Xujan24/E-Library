@@ -1,0 +1,16 @@
+.form{
+    border: 1px groove #cccccc;
+    padding: 1rem;
+    border-radius: 0.3rem;
+    background: #f2f3f4;
+}
+
+.flexbox{
+    &.isSmall{
+        flex-direction: column;
+
+        div{
+            padding: 0px;
+        }
+    }
+}

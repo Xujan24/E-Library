@@ -1,0 +1,56 @@
+<header class="top-section">
+  <div class="brand">
+      <div>
+          <img src="../assets/logo.png" alt="LOGO" />
+      </div>
+
+      <div>
+          <p class="brand-title">E-Library Portal</p>
+          <p class="brand-subtitle">Everything you need.</p>
+      </div>
+
+  </div>
+</header>
+
+<main>
+  <div class="box">
+    <p class="title">Create a new account</p>
+    <p class="subtitle">All fields are compulsary.</p>
+    <form class="form" [formGroup]="signupForm">
+      <p class="label">Your full name<sup>*</sup>:</p>
+      <input type="text" class="form-control" placeholder="Full Name" formControlName="displayName" (keyup)="checkForm()"/>
+
+      <p class="label">Your email<sup>*</sup>:</p>
+      <input type="email" class="form-control" placeholder="Email" formControlName="email" (keyup)="matchEmail()" />
+      <div class="warning" [hidden]='!showEmailError'>
+        <p>{{emailError}}</p>
+      </div>
+
+      <p class="label"> Confirm email<sup>*</sup>:</p>
+      <input type="email" class="form-control" placeholder="Re-Email" formControlName="re_email" (keyup)="matchEmail()" />
+      <div class="warning" [hidden]="!showEmailMismatchError">
+        <p>Email didn't match!</p>
+      </div>
+
+      <p class="label">Password<sup>*</sup>:</p>
+      <input type="password" class="form-control" placeholder="Password" formControlName="password" (keyup)="checkForm()" />
+      <div class="warning" [hidden]="!showPwdError">
+        <p>Invalid password!</p>
+      </div>
+      <div class="warning" style="color: black;">
+        <p>A valid password must contain:</p>
+        <ul>
+          <li>Minimum 8 characters</li>
+          <li>Minimum one lowercase and one upper case letter</li>
+          <li>Atleast one number</li>
+          <li>At least one special character</li>
+        </ul>
+      </div>
+
+      <button class="button" [disabled]='!isFormValid' [ngClass]="{'button-primary': isFormValid}" (click)="btnClick()">Create!</button>
+      <p style="font-size: 0.7rem;margin-bottom: 0.5rem;font-style: italic;">(By clicking the Create button, you agree with the <a routerLink="/terms-and-conditions" target="_blank">terms and conditions</a> of E-LIBRARY portal.)</p>
+    </form>
+
+    <a routerLink="/login"><span class="icon"><i class="fas fa-arrow-circle-left"></i></span> Back to login</a>
+  </div>
+</main>

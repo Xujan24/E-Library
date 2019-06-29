@@ -1,0 +1,72 @@
+// google fonts
+@import 'https://fonts.googleapis.com/css?family=Assistant:300,400,700&display=swap';
+
+// Variables for Responsive breakpoints
+//==============================================================
+// Responsive Breakpoints specifications:
+//==============================================================
+// smartphone (portrait): max 480px;
+// smartphone (landscape) min: 481px max: 767px;
+// tablet (portrait and landscape): min: 768px max: 1024px;
+// desktop and larger screens: min: 1025px;
+//==============================================================
+$mobile-portrait: 480px;
+$mobile-tablet: 767px;
+$tablet-desktop: 1024px;
+
+// Variables for color scheme
+//==============================================================
+$primary-color: #018796;
+$primary-light-color: #59d7e5;
+
+// Variables for primary font and font weights
+//==============================================================
+$primary-font: 'Assistant', sans-serif;
+$light: 300;
+$regular: 400;
+$bold: 700;
+
+// Varaibles for font sizes
+//==============================================================
+$title-font-size: 1.5rem;
+$title-font-size-mobile: 1.3rem;
+$title-font-weight: $regular;
+$title-padding: 1rem 0rem 0rem 0rem;
+
+$subtitle-font-size: 1rem;
+$subtitle-font-size-mobile: 0.8rem;
+$subtitle-font-weight: $light;
+$subtitle-padding: 0rem 0rem 1.5rem 0rem;
+
+$extra-large-font-size: 4rem;
+$extra-large-font-size-mobile: 2.5rem;
+
+$extra-bold: 900;
+$extra-bold-mobile: 700;
+
+$author-font-size: 0.9rem;
+
+// Variables for colors for different events
+//==============================================================
+$success: #00916f;
+$danger: #c1391b;
+$primary: #008fbf;
+
+//variables for general layouts
+//==============================================================
+$container-width-mobile: 90%;
+$container-width-tablet: 90%;
+$container-width: 860px;
+
+// Variables for navbar
+//==============================================================
+$top-navbar-color: $primary-color;
+$menu-bar-color: $primary-light-color;
+$menu-items-color: #c44100;
+
+// Variables for form
+//===============================================================
+$label-font-weight: $light;
+$label-font-size: 0.9rem;
+
+

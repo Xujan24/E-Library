@@ -1,0 +1,23 @@
+.search_title{
+    span{
+        &::before{
+            content: "/";
+            padding: 0rem 0.2rem;
+        }
+
+        &:first-child{
+
+            &::before{
+                content: none;
+                padding: 0rem;
+            }
+            
+        }
+    }
+}
+
+.justify-contents{
+    .right{
+        text-align: right;
+    }
+}

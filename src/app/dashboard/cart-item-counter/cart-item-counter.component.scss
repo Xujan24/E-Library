@@ -1,0 +1,9 @@
+@import '../../../scss/variables';
+
+.badge{
+    font-size: 0.7rem;
+    background-color: $primary;
+    color: white;
+    border-radius: 0.4rem;
+    padding: 0.1rem 0.4rem;
+}

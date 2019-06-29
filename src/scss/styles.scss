@@ -1,0 +1,381 @@
+/* You can add global styles to this file, and also import other style files */
+@import './_variables.scss';
+@import './components';
+
+@import '../../node_modules/@fortawesome/fontawesome-free/scss/variables';
+@import '../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '../../node_modules/@fortawesome/fontawesome-free/scss/regular.scss';
+@import '../../node_modules/@fortawesome/fontawesome-free/scss/solid.scss';
+@import '../../node_modules/@fortawesome/fontawesome-free/scss/brands.scss';
+
+*{
+    margin: 0rem;
+    font-family: $primary-font;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color: $primary-color;
+    cursor: pointer;
+}
+
+ul{
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+.img{
+    width: 100%;
+    height: auto;
+}
+
+.hidden{
+    display: none !important;
+}
+
+.visible{
+    display: block !important;
+}
+
+.disabled{
+    background-color: #a5a5a5; 
+}
+
+// layout
+.container{
+    width: $container-width-mobile;
+    margin: auto;
+    padding: 0rem;
+}
+
+header{
+    .top-section{
+        background-color: $top-navbar-color;
+    }
+
+    .bottom-section{
+        background-color: $menu-bar-color;
+        padding: 0.5rem 0rem;
+    }
+}
+
+main{
+    padding-top: 1rem;
+}
+
+footer{
+    border-top: 2px solid rgba(0,0,0,0.1);
+    margin-top: 3rem;
+    padding-bottom: 1.5rem;
+}
+
+.justify-contents{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    .left{
+        order: 1;
+        flex: auto;
+        text-align: left;
+    }
+
+    .right{
+        order: 2;
+        flex: auto;
+    }
+}
+
+.is{
+    &-50{
+        width: 50%;
+    }
+    &-100{
+        width: 100%;
+    }
+}
+
+// text
+.title{
+    padding: $title-padding;
+    font-size: $title-font-size;
+    font-weight: $title-font-weight;
+}
+
+.subtitle{
+    padding: $subtitle-padding;
+    font-size: $subtitle-font-size;
+    font-weight: $subtitle-font-weight;
+}
+
+.footnote{
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0,0,0,0.2);
+}
+
+
+.extra-large{
+    font-size: $extra-large-font-size-mobile;
+    margin-bottom: 1rem;
+}
+
+.extra-bold{
+    font-weight: $extra-bold-mobile;
+}
+
+.flexbox{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+// Media queries for responsive handlers
+// smartphones (potrait)
+@media screen and (max-width: $mobile-portrait){
+    .title{
+        font-size:$title-font-size-mobile;
+    }
+
+    .subtitle{
+        font-size: $subtitle-font-size-mobile;
+    }
+    .login-box{
+        width: 80%;
+    }
+
+    .collapsible-menu{
+        .menu-items{
+            display: none;
+            li{
+                border-bottom: 1px groove rgba(0,0,0,0.4);
+                
+                &:last-child{
+                    border-bottom: none;
+                }
+            }
+        }   
+    }
+
+    .is{
+        &-50{
+            width: 100%;
+        }
+    }
+
+    .items{
+        .item{
+            .thumbnail{
+                margin: 0px auto; 
+            }
+        }
+    }
+
+    .flexbox{
+        .items{
+            margin-bottom: 1.5rem;
+        }
+    }
+}
+
+// smartphone (landscape)
+@media screen and (min-width: $mobile-portrait + 1) and (max-width: $mobile-tablet){
+    .title{
+        font-size:$title-font-size-mobile;
+    }
+    .subtitle{
+        font-size: $subtitle-font-size-mobile;
+    }
+    .login-box{
+        width: 20rem;
+    }
+
+    .collapsible-menu{
+        .menu-items{
+            display: none;
+            li{
+                border-bottom: 1px groove rgba(0,0,0,0.4);
+                
+                &:last-child{
+                    border-bottom: none;
+                }
+            }
+        }   
+    }
+
+    .search-box{
+        width: 300px;
+    }
+
+    .is{
+        &-50{
+            width: 100%;
+        }
+    }
+
+    .items{
+        .item{
+            .thumbnail{
+                margin: 0px auto;    
+            }
+        }
+    }
+
+    .flexbox{
+        .items{
+            margin-bottom: 1.5rem;
+        }
+    }
+}
+
+// tablet (portrait and landscape)
+@media screen and (min-width: $mobile-tablet + 1) and (max-width: $tablet-desktop){
+    .container{
+        width: $container-width-tablet;
+    }
+    .login-box{
+        width: 20rem;
+    }
+
+    .form-control-group{
+        width: 25rem;
+    }
+
+    .collapsible-menu{
+        .mobile-menu-icon{
+            display: none;
+        }
+    
+        .menu-items{
+            li{
+                display: inline-block;
+                a{
+                    display: block;
+                    margin-right: 1rem;
+                }
+            }
+        }
+    }
+
+    .search-box{
+        width: 250px;
+    }
+
+    .extra-large{
+        font-size: $extra-large-font-size;
+    }
+    
+    .extra-bold{
+        font-weight: $extra-bold;
+    }
+
+    .flexbox{
+        flex-direction: row;
+        align-items: center;
+
+        div{
+            padding: 0.5rem;
+            flex-grow: 1;
+        }
+
+        .is-2{
+            flex-grow: 2;
+        }
+    }
+
+    .items{
+        .item{
+            flex-direction: row;
+
+            .thumbnail{
+                flex: 0 auto;
+            }
+
+            .item-details{
+                flex: 1 auto;
+            }
+        }
+    }
+
+    // shifts the controls on the search reasults to right side
+    .controls{
+        text-align: right !important;
+    }
+}
+
+// desktop and larger screens
+@media screen and (min-width: $tablet-desktop + 1){
+    .container{
+        width: $container-width;
+    }
+    .login-box{
+        width: 20rem;
+    }
+    .form-control-group{
+        width: 25rem;
+    }
+
+    .collapsible-menu{
+        .mobile-menu-icon{
+            display: none;
+        }
+    
+        .menu-items{
+            li{
+                display: inline-block;
+                a{
+                    display: block;
+                    margin-right: 3rem;
+                }
+            }
+        }
+    }
+
+    .search-box{
+        width: 250px;
+    }
+
+    .extra-large{
+        font-size: $extra-large-font-size;
+    }
+    
+    .extra-bold{
+        font-weight: $extra-bold;
+    }
+
+    .flexbox{
+        flex-direction: row;
+        align-items: center;
+
+        div{
+            padding: 0.5rem;
+            flex-grow: 1;
+        }
+
+        .is-2{
+            flex-grow: 2;
+        }
+    }
+
+    .items{
+        .item{
+            flex-direction: row;
+
+            .thumbnail{
+                flex: 0 auto;
+            }
+
+            .item-details{
+                flex: 1 auto;
+            }
+        }
+    }
+
+    // shifts the controls on the search reasults to right side
+    .controls{
+        text-align: right !important;
+    }
+}

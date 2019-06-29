@@ -1,0 +1,37 @@
+<p class="subtitle">You currently owe:</p>
+
+<app-spinner *ngIf="showSpinner else showResults"></app-spinner>
+
+<ng-template #showResults>
+  <div *ngIf="_isnull else borrowedItems">
+    Sorry, no books borrowed
+  </div>
+  
+  <ng-template #borrowedItems>
+    <div class="list">
+        <div class="justify-contents" *ngFor="let item of items">
+          <div class="book_title">
+            <a routerLink="/dashboard/books/{{item.bookId}}" class="subtitle">{{item.bookTitle}}</a>
+            <p *ngIf="item.authors" class="authors">
+              <span *ngFor="let author of item.authors">{{author}}</span>
+            </p>
+            <p class="date">
+              Borrowed on: {{item.borrowDate | dateFormat: 'dd-MM-yyyy'}} | 
+              Return Date: {{item.returnDate | dateFormat: 'dd-MM-yyyy'}}</p>
+          </div>
+          <div class="controls">
+            <a *ngIf="item.numRenew < 5" class="button button-primary" (click)="renew(item.docId)">
+              <span class="icon"><i class="fas fa-sync-alt"></i></span> Renew
+            </a>
+            <a class="button" (click)="return(item.docId)">
+              <span class="icon"><i class="fas fa-undo"></i></span> Return
+            </a> <br />
+            <span style="font-size: 0.7rem;display: block;margin-top: 1rem;"> | Total Renew: {{item.numRenew}} of 5. 
+              <span style="color: red;" *ngIf = "item.numRenew >= 5">| Maximum renew cycle crossed.</span>
+            </span>
+            
+          </div>
+        </div> 
+      </div>
+  </ng-template>
+</ng-template>

@@ -1,0 +1,9 @@
+<app-spinner *ngIf="showSpinner else showControls"></app-spinner>
+<ng-template #showControls>
+    <button *ngIf="_showViewDetails" class="button button-primary" (click)="viewClick()">View Details</button>
+    <button *ngIf="!_showViewDetails" class="button button-primary" (click) = "goBack()">Back</button>
+    <button *ngIf="showSave" class="button" (click)="add_to_wish()">Save</button>
+    <button *ngIf="!showSave" class="button button-danger" (click)="unsave()">Unsave</button>
+    <button *ngIf="showAddCart" class="button button-success" (click)="add_to_cart()">Add to Cart</button>
+    <button *ngIf="!showAddCart" class="button button-danger" (click)="remove_from_cart()">Remove</button>
+</ng-template>

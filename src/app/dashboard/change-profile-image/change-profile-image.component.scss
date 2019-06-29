@@ -1,0 +1,35 @@
+@import '../../../scss/variables';
+.image-container{
+    float: right;
+    img{
+        max-width: 110px;
+        cursor: pointer;
+        border: 1px solid rgba(0,0,0,0.2);
+        border-radius: 1rem;
+    }
+}
+
+[type="file"] {
+    height: 0;
+    overflow: hidden;
+    width: 0;
+  }
+  
+  [type="file"] + label {
+    background: lighten($primary, 5%);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 1rem;
+    outline: none;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: all 0.3s;
+    vertical-align: middle;
+    
+    &:hover {
+      background-color: $primary;
+    }
+}

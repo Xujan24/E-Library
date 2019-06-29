@@ -1,0 +1,32 @@
+<app-spinner *ngIf="showSpinner else showCartItems"></app-spinner>
+
+<ng-template #showCartItems>
+  <div *ngIf = "showItemAddedMessage else results">
+    Items borrowed successfully.
+  </div>
+
+  <ng-template #results>
+      <div *ngIf="_isnull else items">
+          Your cart is empty!
+        </div>
+        
+        <ng-template #items>
+          Your items:
+          <div class="list">
+              <div class="justify-contents" *ngFor="let item of item$">
+                <div class="book_title">
+                  <a routerLink="/dashboard/books/{{item.bookId}}" class="subtitle">{{item.bookTitle}}</a>
+                  <p *ngIf="item.authors" class="authors">
+                    <span *ngFor="let author of item.authors">{{author}}</span>
+                  </p>
+                </div>
+                <div class="delete">
+                  <a class="button button-danger" (click)="delete(item.bookId)"><i class="far fa-trash-alt"></i></a>
+                </div>
+              </div> 
+            </div>
+      
+            <button class="button button-primary" style="margin-top: 1rem;" (click)="submitRequest()">Borrow Books</button>
+        </ng-template>
+  </ng-template>
+</ng-template>

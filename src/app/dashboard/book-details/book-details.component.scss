@@ -1,0 +1,23 @@
+.bookDetails-flexbox{
+    align-items: flex-start;
+    width: 100%;
+
+    div{
+        padding: 0.5rem;
+    }
+
+    .left{
+        width: 100%;
+        flex: 1;
+    }
+
+    .right{
+        width: 100%;
+        min-width: 300px;
+        flex: 0;
+    }
+}
+
+.bookDetails-title{
+    align-items: flex-start;
+}

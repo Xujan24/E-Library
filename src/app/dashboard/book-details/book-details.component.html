@@ -1,0 +1,64 @@
+<app-spinner *ngIf="showSpinner else showBook"></app-spinner>
+
+<ng-template #showBook>
+  <div *ngIf="HttpError else showResult">
+    Sorry we couldn't process your request at the moment. Please refresh your browser.
+  </div>
+  <ng-template #showResult>
+      <div *ngIf="Book else notFound" class="flexbox bookDetails-flexbox">
+          <div class="left">
+              <div class="item">
+                <div class="thumbnail">
+                  <div class="flexbox bookDetails-title">
+                     <div>
+                      <div *ngIf="Book.volumeInfo.imageLinks else noThumbnail">
+                        <img src="{{Book.volumeInfo?.imageLinks.smallThumbnail}}" class="img" alt="THUMBNAIL" />
+                      </div>
+                      <ng-template #noThumbnail>
+                          <img src="../../../assets/imgs/not_thumbnail_small.png" class="img" alt="NO THUMBNAIL" />
+                      </ng-template> 
+                      </div>
+                      <div>
+                          <p class="title">{{Book.volumeInfo?.title}}</p>
+                      
+                          <ul class="subtitle authors">
+                            <li *ngFor="let author of Book.volumeInfo.authors">{{author}}</li>
+                          </ul> <br />
+                          <p *ngIf = "Book.volumeInfo.averageRating" class="rating">Average Rating: {{Book.volumeInfo.averageRating}} <span style="font-style: italic;">({{Book.volumeInfo.ratingsCount}})</span></p>
+                          <p class="publisher">{{Book.volumeInfo?.publisher}}</p>
+                      </div> 
+                  </div>
+                       
+                </div>
+                <div class="item-details">
+                  <div class="description" *ngIf="Book.volumeInfo.description" [innerHTML]='Book.volumeInfo?.description'></div>
+                  <p class="title">Additional Informations:</p>
+                  <ul class="info">
+                    <li>Pages: {{Book.volumeInfo.pageCount}}</li>
+                    <li>Published Date: {{Book.volumeInfo?.publishedDate}}</li>
+                    <li class="group">ISBN: <br />
+                      <span *ngFor="let isbn of Book.volumeInfo.industryIdentifiers">{{isbn.identifier}} ({{isbn.type}})</span>
+                    </li>
+                    <li class="group">Category: <br />
+                      <span *ngFor="let category of Book.volumeInfo.categories">{{category}}</span>
+                    </li>
+                  </ul>
+                  
+                  <div class="controls">
+                    <app-controls [bookID] = "Book.id" [showViewDetails] = "false" [bookTitle] = "Book.volumeInfo.title" [authors]="Book.volumeInfo.authors"></app-controls>
+                  </div>
+                  
+                </div>
+              </div>
+          </div>
+          <div class="right">
+            <app-advance-search [isSmall]='isSmall'></app-advance-search>
+          </div>
+        </div>
+        
+        <ng-template #notFound>
+          <p class="title">Sorry, Book not found!</p>
+        </ng-template>
+  </ng-template>
+</ng-template>
+

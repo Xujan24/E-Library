@@ -1,0 +1,14 @@
+<div class="image-container">
+  <div>
+    <img *ngIf="(profileImageLink | async) else noProfileImage" class="img" src="{{profileImageLink | async}}" />
+    <ng-template #noProfileImage>
+      <img class="img"  src="../../../assets/imgs/user-dummy.png" alt="Dummy Profile Image"/>
+    </ng-template>
+    
+  </div>
+  <div>
+    <input type="file" id="file" (change) = "onUpload($event)" accept=".png, .jpg" max />
+    <label for="file">choose a file</label>
+    <p *ngIf="showUploader"><progress max="100" [value]="(uploadProgress | async)"></progress></p>
+  </div>
+</div>

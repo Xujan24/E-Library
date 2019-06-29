@@ -1,0 +1,61 @@
+<p class="title">Welcome {{displayName}}</p>
+<p class="subtitle"> This is your personal dashboard. </p>
+
+<p class="title">Your Recent Activities</p>
+
+<div *ngIf="borrowedItems && savedItems && histories else showSpinner">
+  <div class="flexbox">
+    <div class="items borrowed">
+      <p class="title"><span class="icon"><i class="fas fa-book"></i></span> Your recently borrowed:</p>
+      <div *ngIf="borrowedItems.length > 0 else emptyBorrow">
+        <div class="item-container" *ngFor = "let item of borrowedItems">
+          <a routerLink="/dashboard/books/{{item.bookId}}" class="subtitle">{{item.bookTitle}}</a>
+          <p class="subtitle">Borrowed on: {{item.borrowDate | dateFormat: 'dd-MM-yyyy'}}</p>
+        </div>
+        <a routerLink="/dashboard/borrowed" style="padding: 0.8re 0rem;">View all borrowed items <span class="icon"><i class="fas fa-angle-double-right"></i></span></a>
+      </div>
+      <ng-template #emptyBorrow>
+        <div>
+          <p class="subtitle">You currently don't owe any books.</p>
+        </div>
+      </ng-template>
+      
+    </div>
+    <div class="items saved">
+      <p class="title"><span class="icon"><i class="fas fa-heart"></i></span> Saved Books</p>
+
+      <div *ngIf="savedItems.length > 0 else emptySaved">
+          <div class="item-container" *ngFor = "let item of savedItems">
+            <a routerLink="/dashboard/books/{{item.bookId}}" class="subtitle">{{item.bookTitle}}</a>
+          </div>
+          <a routerLink="/dashboard/saved-items" style="padding: 0.8re 0rem;">View all saved items <span class="icon"><i class="fas fa-angle-double-right"></i></span></a>
+      </div>
+      <ng-template #emptySaved>
+        <div>
+          <p class="subtitle">You currently don't have any saved books.</p>
+        </div>
+        
+      </ng-template>
+    </div>
+    <div class="items history">
+      <p class="title"><span class="icon"><i class="fas fa-book-reader"></i></span> You recently viewed</p>
+
+      <div *ngIf="histories.length > 0 else emptySaved">
+          <div class="item-container" *ngFor = "let item of histories">
+            <a routerLink="/dashboard/books/{{item.bookId}}" class="subtitle">{{item.bookTitle}}</a>
+          </div>
+          <a routerLink="/dashboard/history" style="padding: 0.8re 0rem;">View all recetly viewed <span class="icon"><i class="fas fa-angle-double-right"></i></span></a>
+      </div>
+      <ng-template #emptySaved>
+        <div>
+          <p class="subtitle">You currently don't have any saved books.</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<ng-template #showSpinner>
+  <app-spinner></app-spinner>
+</ng-template>
+

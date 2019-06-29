@@ -1,0 +1,32 @@
+<div class="advanced-search">
+  <p class="title">Advance Search</p>
+    <form [formGroup]="advanceSearchForm" class="form" style="width: 100%;">
+      <div class="flexbox" [ngClass]="{'isSmall': _isSmall}">
+        <div class="is-2">
+          <p class="label">Title:</p>
+          <input type="text" class="form-control" placeholder="title" formControlName="title" />
+        </div>
+
+        <div>
+            <p class="label">Author:</p>
+            <input type="text" class="form-control" placeholder="Author" formControlName="author" />
+        </div>
+      </div>
+
+      <div class="flexbox" [ngClass]="{'isSmall': _isSmall}">
+        <div>
+          <p class="label">Subject:</p>
+          <input type="text" class="form-control" placeholder="Subject" formControlName="subject" />
+        </div>
+
+        <div>
+          <p class="label">ISBN:</p>
+          <input type="text" class="form-control" placeholder="ISBN" formControlName="isbn" />
+        </div>
+
+        <div>
+          <button class="button button-primary" (click)="search()">Search</button>
+        </div>
+      </div>
+    </form>
+</div>

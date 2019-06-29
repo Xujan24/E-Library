@@ -1,0 +1,20 @@
+.justify-contents{
+    display: block;
+
+    .controls{
+        text-align: left !important;
+        margin: 1rem 0rem;
+
+        a{
+            margin-left: 0.5rem;
+        }
+
+        a:first-child{
+            margin-left: 0;
+        }
+    }
+
+    .authors, .date{
+        font-size: 0.8rem;
+    }
+}

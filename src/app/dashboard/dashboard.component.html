@@ -1,0 +1,118 @@
+<header>
+    <!--
+      top section
+    -->
+    <div class="top-section">
+      <div class="container">
+        <nav class="navbar">
+
+          <!--
+            left-section
+          -->
+          <div class="brand">
+            <div>
+                <img src="../../assets/logo.png" alt="LOGO" />
+            </div>
+      
+            <div>
+                <p class="brand-title">E-Library Portal</p>
+                <p class="brand-subtitle">Everything you need.</p>
+            </div>
+          </div>
+
+          <!--
+            navbar menu
+          -->
+          <div class="item-right">
+            <div class="dropdown">
+            <img *ngIf = "photoUrl else dummyImage" class="profile-img" src = "{{photoUrl}}" (click)="toggleDropdown()"/>
+            <ng-template #dummyImage> 
+                <img class="profile-img" src="../../assets/imgs/user-dummy.png" alt="profile-image" (click)="toggleDropdown()"/>
+            </ng-template>
+            
+            <div class="content" [ngClass]="{'hidden': !showDropdown}">
+              <p class="username">{{displayName}}</p>
+              <p class="email">{{userEmail}}</p>
+              <hr />
+              <div class="justify-contents">
+                <div class="left">
+                  <a routerLink="/dashboard/settings" (click)="toggleDropdown()"> <span class="icon"><i class="fas fa-user-cog"></i></span> Settings</a>
+                </div>
+
+                <div class="right">
+                  <a href="javascript:void(0);" (click)="logout()"> <span class="icon"><i class="fas fa-power-off"></i></span> Logout </a>
+                </div>
+                  
+                  
+              </div>
+              
+            </div>
+            </div>
+          </div>
+
+        </nav>
+      </div>
+    </div>
+
+    <!--
+      bottom section collapsible menu
+    -->
+    <div class="bottom-section">
+      <div class="container">
+        <div class="collapsible-menu">
+          <div class="mobile-menu-icon">
+            <div class="justify-contents">
+              <div class="right" (click)="toggleMenuItems()">
+                <span class="icon" [ngClass]="{'hidden': showMenuItems}"><i class="fas fa-bars"></i></span>
+                <span class="icon" [ngClass]="{'hidden': !showMenuItems}"><i class="fas fa-times"></i></span>
+              </div>
+              <div class="left">
+                  <div class="search-box form-control-group">
+                      <div class="input">
+                        <input type="text" [(ngModel)]="queryString" (keyup.enter) = "search()" class="form-control" placeholder="search book..." />
+                      </div>
+                      <div class="btn">
+                        <button type="button" class="button" (click)="search()"><i class="fas fa-search"></i></button>
+                      </div>
+                    </div>
+              </div>
+            </div>
+            
+          </div>
+          <div class="menu-items" [ngClass]="{'visible': showMenuItems}">
+            <ul>
+              <li><a routerLink='/dashboard'>Home</a></li>
+              <li><a routerLink='/dashboard/borrowed'>Borrowed</a></li>
+              <li><a routerLink='/dashboard/history'>History</a></li>
+              <li><a routerLink='/dashboard/saved-items'>Saved</a></li>
+              <li><a routerLink='/dashboard/cart'>Cart <app-cart-item-counter></app-cart-item-counter></a></li>
+              <li>
+                  <div class="search-box form-control-group" [ngClass]="{'hidden': showMenuItems}">
+                      <div class="input">
+                        <input type="text" [(ngModel)]="queryString" (keyup.enter) = "search()" class="form-control" placeholder="search book..." />
+                      </div>
+                      <div class="btn">
+                        <button type="button" class="button" (click)="search()"><i class="fas fa-search"></i></button>
+                      </div>
+                    </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+</header>
+
+<main>
+  <div class="container">
+      <router-outlet></router-outlet>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+      <div class="footnote" style="border-top: none;padding-top: 0rem;">
+          <p>E-library portal. <i class="far fa-copyright"></i> 2019. University of Lorem.</p>
+      </div>
+  </div>
+</footer>

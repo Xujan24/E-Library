@@ -1,0 +1,38 @@
+<header class="top-section">
+  <div class="brand">
+    <div>
+      <img src="../assets/logo.png" alt="LOGO" />
+    </div>
+  
+    <div>
+        <p class="brand-title">E-Library Portal</p>
+        <p class="brand-subtitle">Everything you need.</p>
+    </div>
+  
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <div class="message message-success" *ngIf="show_success_message">
+      <p class="message-text">{{message}}</p>
+    </div>
+
+    <div class="message message-danger" *ngIf="show_error_message">
+        <p class="message-text">{{message}}</p>
+      </div>
+
+    <p class="title">Congratulations! You have successfully created your account.</p>
+    <p class="subtitle">
+      We are delighted to have you in our member list. Before going any further, I would like to inform you that 
+      you first need to verify your email. An email with your verification link has been sent. Please check your 
+      inbox (occasionally your spam/junk folder.) If you haven't received your verification link yet (or your verification link 
+      has expired ), then click on the link below and we'll send you a new link.
+    </p>
+
+    <a class="button button-primary" (click)="resend_verification_link()">Resend Link</a> <br /> <br />
+
+    <a (click)="back_login()">Go to login <span class="icon"><i class="fas fa-sign-in-alt"></i></span></a>
+  </div>
+</main>
