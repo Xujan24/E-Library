@@ -1,4 +1,7 @@
-# Backend
+
+# E-Library
+E-library is a library portal system built with **Angular 8** and **Firebase**. No any CSS Frameworks have been used in this project and everything is created from scratch. **SCSS** has been used as the CSS pre-processor and the template is fully responsive.
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
 
