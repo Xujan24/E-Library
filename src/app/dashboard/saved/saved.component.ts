@@ -1,3 +1,4 @@
+import { DashboardComponent } from './../dashboard.component';
 import { BookeepingService } from './../../../services/bookeeping.service';
 import { SavedItems } from './../../../models/savedItems';
 import { Subscription } from 'rxjs';
@@ -15,10 +16,12 @@ export class SavedComponent implements OnInit, OnDestroy {
   savedItem$: SavedItems[];
 
   constructor(
-    private bookeeping: BookeepingService
+    private bookeeping: BookeepingService,
+    private dashboard: DashboardComponent
   ) {}
 
   ngOnInit() {
+    this.dashboard.showMenuItems = false;
     this.bookeeping.getCurrentUserID().then(() => {
       this.getAllSavedItems();
     });

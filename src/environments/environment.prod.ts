@@ -2,16 +2,16 @@ export const environment = {
   production: true,
   // your firebase configuration keys
   firebaseConfig: {
-    apiKey: 'XXXXXXXXXXXXXXXXXXXXX',
-    authDomain: 'XXXXXXXXXXXXXXXXXXXXX',
-    databaseURL: 'XXXXXXXXXXXXXXXXXXXXX',
-    projectId: 'XXXXXXXXXXXXXXXXXXXXX',
-    storageBucket: 'XXXXXXXXXXXXXXXXXXXXX',
-    messagingSenderId: 'XXXXXXXXXXXXXXXXXXXXX',
-    appId: 'XXXXXXXXXXXXXXXXXXXXX'
+    apiKey: 'XXXXXXXXXXXXXXXXXXXXXXX',
+    authDomain: 'XXXXXXXXXXXXXXXXXXXXXXX',
+    databaseURL: 'XXXXXXXXXXXXXXXXXXXXXXX',
+    projectId: 'XXXXXXXXXXXXXXXXXXXXXXX',
+    storageBucket: 'XXXXXXXXXXXXXXXXXXXXXXX',
+    messagingSenderId: 'XXXXXXXXXXXXXXXXXXXXXXX',
+    appId: 'XXXXXXXXXXXXXXXXXXXXXXX'
 
   },
 
   // your google api keys
-  googleBooksAPI: 'XXXXXXXXXXXXXXXXXXXXX',
+  googleBooksAPI: 'XXXXXXXXXXXXXXXXXXXXXXX',
 };

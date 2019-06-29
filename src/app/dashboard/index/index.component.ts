@@ -1,11 +1,12 @@
+import { DashboardComponent } from './../dashboard.component';
 import { UserAuthService } from './../../../services/user-auth.service';
 import { BookeepingService } from './../../../services/bookeeping.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { BorrowItem } from '../../../models/BorrowItems';
 import { SavedItems } from '../../../models/savedItems';
 import { History } from '../../../models/history';
-import { take, first } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-index',
@@ -29,9 +30,11 @@ export class IndexComponent implements OnInit, OnDestroy {
   constructor(
     private bookeeping: BookeepingService,
     private userAuth: UserAuthService,
+    private dashboard: DashboardComponent
   ) { }
 
   ngOnInit() {
+    this.dashboard.showMenuItems = false;
     this.bookeeping.getCurrentUserID().then(
       () => {
         this.borrowSubscription = this.bookeeping.getItems(this.bookeeping.borrowCollection, this.numItems, 'borrowDate', 'desc')
@@ -53,7 +56,7 @@ export class IndexComponent implements OnInit, OnDestroy {
     }
 
     if (this.savedSubscription !== undefined){
-      this.savedSubscription.unsubscribe()
+      this.savedSubscription.unsubscribe();
     }
 
     if (this.historySubscription !== undefined){

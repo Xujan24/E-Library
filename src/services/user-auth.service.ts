@@ -169,7 +169,7 @@ export class UserAuthService {
           });
         }
     })
-    .catch(e => console.log(e.message));
+    .catch(e => window.alert(e.message));
   };
 
   /**

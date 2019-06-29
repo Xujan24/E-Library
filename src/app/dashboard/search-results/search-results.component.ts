@@ -1,3 +1,4 @@
+import { DashboardComponent } from './../dashboard.component';
 import { Subscription } from 'rxjs';
 import { GoogleBooksService } from './../../../services/google-books.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -28,9 +29,11 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private googleBooks: GoogleBooksService,
+    private dashboard: DashboardComponent
   ) {}
 
   ngOnInit() {
+    this.dashboard.showMenuItems = false;
     this.getResults();
   }
 

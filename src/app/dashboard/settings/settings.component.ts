@@ -35,6 +35,7 @@ export class SettingsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.dashboard.showMenuItems = false;
     this.getDisplayName();
   }
 

@@ -1,3 +1,4 @@
+import { DashboardComponent } from './../dashboard.component';
 import { GoogleBooksService } from './../../../services/google-books.service';
 import { BookeepingService } from './../../../services/bookeeping.service';
 import { History } from './../../../models/history';
@@ -19,10 +20,12 @@ export class HistoryComponent implements OnInit, OnDestroy{
   showSpinner = true;
 
   constructor(
-    private bookeeping: BookeepingService
+    private bookeeping: BookeepingService,
+    private dashboard: DashboardComponent
   ) { }
 
   ngOnInit() {
+    this.dashboard.showMenuItems = false;
     this.bookeeping.getCurrentUserID().then(() => {
       this.getHistories();
     });

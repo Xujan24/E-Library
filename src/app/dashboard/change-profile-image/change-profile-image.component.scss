@@ -1,6 +1,7 @@
 @import '../../../scss/variables';
 .image-container{
     float: right;
+    text-align: right;
     img{
         max-width: 110px;
         cursor: pointer;

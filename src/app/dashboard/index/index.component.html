@@ -4,7 +4,7 @@
 <p class="title">Your Recent Activities</p>
 
 <div *ngIf="borrowedItems && savedItems && histories else showSpinner">
-  <div class="flexbox">
+  <div class="flexbox" id="index-container">
     <div class="items borrowed">
       <p class="title"><span class="icon"><i class="fas fa-book"></i></span> Your recently borrowed:</p>
       <div *ngIf="borrowedItems.length > 0 else emptyBorrow">

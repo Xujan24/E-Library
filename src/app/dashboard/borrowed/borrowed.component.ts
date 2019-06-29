@@ -1,3 +1,4 @@
+import { DashboardComponent } from './../dashboard.component';
 import { Subscription } from 'rxjs';
 import { BookeepingService } from './../../../services/bookeeping.service';
 import { BorrowItem } from './../../../models/BorrowItems';
@@ -14,10 +15,12 @@ export class BorrowedComponent implements OnInit, OnDestroy {
   _isnull = true;
   items: BorrowItem[];
   constructor(
-    private bookeeping: BookeepingService
+    private bookeeping: BookeepingService,
+    private dashboard: DashboardComponent
   ) { }
 
   ngOnInit() {
+    this.dashboard.showMenuItems = false;
     this.getBorrowedItems();
   }
 

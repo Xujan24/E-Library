@@ -1,3 +1,4 @@
+import { DashboardComponent } from './../dashboard.component';
 import { BookeepingService } from './../../../services/bookeeping.service';
 import { Subscription } from 'rxjs';
 import { CartItem } from './../../../models/cartItem';
@@ -18,10 +19,12 @@ export class CartComponent implements OnInit, OnDestroy {
 
   constructor(
     private cartServices: CartService,
-    private bookeeping: BookeepingService
+    private bookeeping: BookeepingService,
+    private dashboard: DashboardComponent
   ) { }
 
   ngOnInit() {
+    this.dashboard.showMenuItems = false;
     this.getCartItems();
     this.showItemAddedMessage = false;
   }
